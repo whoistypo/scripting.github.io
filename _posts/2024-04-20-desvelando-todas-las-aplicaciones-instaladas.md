@@ -13,5 +13,9 @@ La primera fuente es la clave de registro `HKLM\Software\Microsoft\Windows\Curre
 
 {% highlight *.ps1 %}
 Get-ItemProperty "HKLM\Software\Microsoft\Windows\CurrentVersion\Uninstall\*"
+{% endhighlight %}
+
+{% highlight *.ps1 %}
 Get-ChildItem -Path "HKLM\Software\Microsoft\Windows\CurrentVersion\Uninstall"
 {% endhighlight %}
+

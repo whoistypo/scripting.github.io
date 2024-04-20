@@ -7,14 +7,18 @@ title: Desvelando todas las aplicaciones instaladas
 
 Con algo de ingeniería inversa, podemos llegar a entender casi completamente cómo este elemento del Panel de Control recupera la información sobre los programas instalados, y así descubrir que puede faltar mucha información que podría ser relevante por ejemplo para administradores de sistemas o usuarios mas exigentes. Conociendo las fuentes de datos, podemos intentar interrogarlas nosotros mismos mediante Powershell.
 
-La primera fuente es la clave de registro `HKLM\Software\Microsoft\Windows\CurrentVersion\Uninstall`. Dentro de esta clave, cada subclave representa una aplicación instalada en el sistema. Cada una de estas subclaves contiene una serie de valores y subclaves que contienen información sobre la aplicación, como su `DisplayName`, `DisplayVersion`, `Publisher` y más.
+### HKLM\Software\Microsoft\Windows\CurrentVersion\Uninstall
 
+La primera fuente es la clave de registro `HKLM\Software\Microsoft\Windows\CurrentVersion\Uninstall`. Dentro de esta clave, cada subclave representa una aplicación instalada en el sistema. Cada una de estas subclaves contiene una serie de valores y subclaves que contienen información sobre la aplicación, como su `DisplayName`, `DisplayVersion`, `Publisher` y más. Veamos como sacar la información con `Get-ItemProperty` y con `Get-ChildItem`
 
+{% highlight js %}
+Get-ItemProperty "HKLM\Software\Microsoft\Windows\CurrentVersion\Uninstall\*"
+Get-ChildItem -Path "HKLM\Software\Microsoft\Windows\CurrentVersion\Uninstall"
+{% endhighlight %}
 
 
 Lanyon is an unassuming [Jekyll](http://jekyllrb.com) theme that places content first by tucking away navigation in a hidden drawer. It's based on [Poole](http://getpoole.com), the Jekyll butler.
 
-### Built on Poole
 
 Poole is the Jekyll Butler, serving as an upstanding and effective foundation for Jekyll themes by [@mdo](https://twitter.com/mdo). Poole, and every theme built on it (like Lanyon here) includes the following:
 

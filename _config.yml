@@ -7,12 +7,6 @@ baseurl:             /
 paginate:            5
 permalink:           pretty
 
-# About/contact
-author:
-  name:              Daniele Tozzi
-  url:               https://typo.us.org
-  email:             denymyservice@gmail.com
-
 # Gems
 plugins:
   - jekyll-paginate

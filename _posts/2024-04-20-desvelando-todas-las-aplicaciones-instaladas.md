@@ -19,3 +19,8 @@ Get-ItemProperty "HKLM\Software\Microsoft\Windows\CurrentVersion\Uninstall\*"
 Get-ChildItem -Path "HKLM\Software\Microsoft\Windows\CurrentVersion\Uninstall"
 {% endhighlight %}
 
+{% highlight *.js %}
+const numbers = [102, -1, 2];
+numbers.sort((a, b) => a - b);
+console.log(numbers);
+{% endhighlight %}

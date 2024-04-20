@@ -2,7 +2,7 @@
 title:               Nothing but typos
 tagline:             'A scripting journey'
 # description:         ''
-url:                 http://typo.us.org
+url:                 http://scripting.github.io
 baseurl:             /
 paginate:            5
 permalink:           pretty

@@ -11,7 +11,7 @@ Con algo de ingeniería inversa, podemos llegar a entender casi completamente c�
 
 La primera fuente es la clave de registro `HKLM\Software\Microsoft\Windows\CurrentVersion\Uninstall`. Dentro de esta clave, cada subclave representa una aplicación instalada en el sistema. Cada una de estas subclaves contiene una serie de valores y subclaves que contienen información sobre la aplicación, como su `DisplayName`, `DisplayVersion`, `Publisher` y más. Veamos como sacar la información con `Get-ItemProperty` y con `Get-ChildItem`. 
 
-{% highlight js %}
+{% highlight *.js %}
 Get-ItemProperty "HKLM\Software\Microsoft\Windows\CurrentVersion\Uninstall\*"
 Get-ChildItem -Path "HKLM\Software\Microsoft\Windows\CurrentVersion\Uninstall"
 {% endhighlight %}

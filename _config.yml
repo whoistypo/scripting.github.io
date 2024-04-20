@@ -6,6 +6,7 @@ url:                 https://typo.us.org
 baseurl:             /
 paginate:            5
 permalink:           pretty
+pygments:            true
 
 # Gems
 plugins:

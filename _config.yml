@@ -2,7 +2,7 @@
 title:               Typo
 tagline:             'A scripting journey'
 # description:         ''
-url:                 http://scripting.github.io
+url:                 https://github.com/whoistypo/scripting.github.io
 baseurl:             /
 paginate:            5
 permalink:           pretty

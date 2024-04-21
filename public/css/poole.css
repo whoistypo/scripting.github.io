@@ -190,6 +190,8 @@ pre code {
 pre::before {
   display: block:
   content: "Powershell";
+  font-size: 50%;
+  color: #000000;
 }
 
 /* Pygments via Jekyll */

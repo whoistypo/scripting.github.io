@@ -76,7 +76,7 @@ a strong {
 /* `:focus` is linked to `:hover` for basic accessibility */
 a:hover,
 a:focus {
-  text-decoration: underline;
+  text-decoration: none;
 }
 
 /* Headings */
@@ -155,10 +155,10 @@ pre {
 code {
   padding: .25em .5em;
   font-size: 85%;
-  color: #000000; /* ex #bf616a */
-  background-color: #ffffff; /* ex #f9f9f9 */
+  color: #000000 !important; /* ex #bf616a */
+  background-color: #ffffff !important; /* ex #f9f9f9 */
   border-radius: 3px;
-  border-color: #000000;
+  border-color: #000000 !important;
 }
 pre {
   display: block;

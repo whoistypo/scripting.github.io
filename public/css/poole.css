@@ -153,10 +153,10 @@ pre {
   font-family: Menlo, Monaco, "Courier New", monospace;
 }
 code {
-  padding: .25em .5em;
+  padding: .15em .5em;
   font-size: 85%;
-  font-weight: medium;
-  color: #bf616a;
+  font-weight: 400 !important;
+  color: #000000; /* #bf616a; */
   background-color: #ffffff; /* #f9f9f9; */
   border-style: solid !important;
   border-width: thin !important;

@@ -186,6 +186,10 @@ pre code {
   background-color: transparent;
   border: 0 !important;
 }
+pre::before {
+  display: block:
+  content: "Powershell";
+}
 
 /* Pygments via Jekyll */
 .highlight {

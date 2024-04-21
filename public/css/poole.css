@@ -155,12 +155,9 @@ pre {
 code {
   padding: .25em .5em;
   font-size: 85%;
-  color: #000000 !important; /* ex #bf616a */
-  background-color: #ffffff !important; /* ex #f9f9f9 */
-  border-radius: 3px;
-  border-style: solid !important;
-  border-width: 1px !important;
-  border-color: #000000 !important;
+  color: #bf616a;
+  background-color: #f9f9f9;
+  border-radius: 10px;
 }
 pre {
   display: block;

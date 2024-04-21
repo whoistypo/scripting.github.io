@@ -161,7 +161,7 @@ code {
   border-style: solid !important;
   border-width: thin !important;
   border-color: darkgrey !important;
-  border-radius: 10px;
+  border-radius: 7px;
 }
 pre {
   display: block;
@@ -178,6 +178,7 @@ pre {
   border-style: solid;
   border-width: thin;
   border-color: darkgrey;
+  border-radius: 7px;
 }
 pre code {
   padding: 0;

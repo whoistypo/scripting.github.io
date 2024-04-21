@@ -37,21 +37,21 @@ Hay otras fuentes como la `HKLM\Software\Classes\Installer\Products`, donde se a
 A través de las Clases WMI, podemos acceder a una amplia gama de información sobre el software instalado en un sistema, desde el nombre y la versión de las aplicaciones hasta detalles más específicos como la ubicación de instalación y la fecha de instalación. Cabe destacar que algunas, para su uso, requieren software preinstalado como, por ejemplo, clientes SMS/SCCM. Los cmdlets que se suelen utilizar en estos casos son `Get-CIMInstance` y `Get-WmiObject`. WMI es la versión de Microsoft de CIM. CIM es el estándar open-source para la recopilación y visualización de información de un ordenador. ¿La diferencia? A nivel local casi ninguna, sin embargo, en términos de **remoting**, cuando hablamos de WMI, el equipo remoto debe permitir el tráfico de red entrante en los puertos TCP 135, 445 y otros puertos adicionales asignados dinámicamente entre 1024 y 1034 (¡pero esto lo dejamos para otro post!). Una última nota importante es que estos cmdlets son más lentos respecto a las interrogaciones del registro porque, al parecer, pueden realizar comprobaciones de consistencia contra cada una de las aplicaciones.
 
 {% highlight powershell %}
-Get-CIMInstance Win32_Product | Select Name, Version, Vendor | Sort-Object Name -Unique
+Get-CIMInstance Win32_Product | Select-Object Name, Version, Vendor | Sort-Object Name -Unique
 {% endhighlight %}
 
 {% highlight powershell %}
-Get-WmiObject -Class Win32_Product | Select Name, Version, Vendor | Sort-Object Name -Unique
+Get-WmiObject -Class Win32_Product | Select-Object Name, Version, Vendor | Sort-Object Name -Unique
 {% endhighlight %}
 
 {% highlight powershell %}
-Get-WmiObject -Class Win32_SoftwareFeature | Select ProductName, Version, Vendor | Sort-Object ProductName -Unique
+Get-WmiObject -Class Win32_SoftwareFeature | Select-Object ProductName, Version, Vendor | Sort-Object ProductName -Unique
 {% endhighlight %}
 
 Otras clases que se pueden utilizar en entornos SCCM son `Win32_AddRemovePrograms`, `Win32_InstalledSoftwareElement` o `Win32_ProductSoftwareFeatures`.
 
 ## Updates 
-Por último, si se necesitan consultar las últimas actualizaciones es posible utilizando la clase `Win32_QuickFixEngineering`.
+Por último, si se necesitáran consultar las últimas actualizaciones del sistema operativo, sería posible utilizando la clase `Win32_QuickFixEngineering`.
 
 {% highlight powershell %}
 Get-WmiObject -Class Win32_QuickFixEngineering

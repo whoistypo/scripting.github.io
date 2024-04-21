@@ -158,9 +158,9 @@ code {
   font-weight: medium;
   color: #bf616a;
   background-color: #ffffff; /* #f9f9f9; */
-  border-style: solid;
-  border-width: thin;
-  border-color: #000000;
+  border-style: solid !important;
+  border-width: thin !important;
+  border-color: #000000 !important;
   border-radius: 10px;
 }
 pre {

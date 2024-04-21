@@ -155,8 +155,12 @@ pre {
 code {
   padding: .25em .5em;
   font-size: 85%;
+  font-weight: medium;
   color: #bf616a;
-  background-color: #f9f9f9;
+  background-color: #ffffff; /* #f9f9f9; */
+  border-style: solid;
+  border-width: thin;
+  border-color: #000000;
   border-radius: 10px;
 }
 pre {
@@ -180,6 +184,7 @@ pre code {
   font-size: 100%;
   color: inherit;
   background-color: transparent;
+  border: 0 !important;
 }
 
 /* Pygments via Jekyll */

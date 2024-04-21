@@ -51,7 +51,7 @@ Get-WmiObject -Class Win32_SoftwareFeature | Select-Object ProductName, Version,
 Otras clases que se pueden utilizar en entornos SCCM son `Win32_AddRemovePrograms`, `Win32_InstalledSoftwareElement` o `Win32_ProductSoftwareFeatures`.
 
 ## Updates 
-Por último, si se necesitáran consultar las últimas actualizaciones del sistema operativo, sería posible utilizando la clase `Win32_QuickFixEngineering`.
+Por último, si se necesitára consultar las últimas actualizaciones del sistema operativo, sería posible utilizando la clase `Win32_QuickFixEngineering`.
 
 {% highlight powershell %}
 Get-WmiObject -Class Win32_QuickFixEngineering

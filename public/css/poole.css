@@ -160,7 +160,7 @@ code {
   background-color: #ffffff; /* #f9f9f9; */
   border-style: solid !important;
   border-width: thin !important;
-  border-color: #000000 !important;
+  border-color: darkgrey !important;
   border-radius: 10px;
 }
 pre {
@@ -177,7 +177,7 @@ pre {
   background-color: #ffffff; /* #f9f9f9; */
   border-style: solid;
   border-width: thin;
-  border-color: #000000;
+  border-color: darkgrey;
 }
 pre code {
   padding: 0;

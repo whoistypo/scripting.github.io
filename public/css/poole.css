@@ -157,10 +157,10 @@ code {
   font-size: 85%;
   font-weight: 400 !important;
   color: #000000; /* #bf616a; */
-  background-color: #ffffff; /* #f9f9f9; */
-  border-style: solid !important;
+  background-color: #f0f0f0; /* #f9f9f9; */
+  /* border-style: solid !important;
   border-width: thin !important;
-  border-color: grey !important;
+  border-color: grey !important; */
   border-radius: 7px;
 }
 pre {
@@ -186,12 +186,6 @@ pre code {
   color: inherit;
   background-color: transparent;
   border: 0 !important;
-}
-pre::before {
-  display: block:
-  content: "Powershell";
-  font-size: 50%;
-  color: #000000;
 }
 
 /* Pygments via Jekyll */

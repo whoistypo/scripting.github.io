@@ -160,7 +160,7 @@ code {
   background-color: #ffffff; /* #f9f9f9; */
   border-style: solid !important;
   border-width: thin !important;
-  border-color: darkgrey !important;
+  border-color: grey !important;
   border-radius: 7px;
 }
 pre {

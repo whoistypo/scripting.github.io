@@ -339,6 +339,7 @@ tbody tr:nth-child(odd) th {
 }
 .post p {
   font-size: 80%;
+  line-height: 28px:
 }
 
 /* Blog post or page title */

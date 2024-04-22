@@ -7,7 +7,7 @@ title: Desvelando las aplicaciones instaladas en Windows 10
 
 ## Consultando el registro
 
-La primera fuente de datos es la clave de registro `HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Uninstall`. Dentro de esta clave, cada subclave representa una aplicación instalada en el sistema. Cada una de estas subclaves contiene información sobre la aplicación, como su *DisplayName*, *DisplayVersion*, *Publisher* y más. Veamos cómo sacar la información con el cmdlet `Get-ItemProperty`. 
+La primera fuente de datos, la misma consultada por `appwiz.cpl`, es la clave de registro `HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Uninstall`. Dentro de esta clave, cada subclave representa una aplicación instalada en el sistema. Cada una de estas subclaves contiene información sobre la aplicación, como su *DisplayName*, *DisplayVersion*, *Publisher* y más. Veamos cómo sacar la información con el cmdlet `Get-ItemProperty`. 
 
 {% highlight powershell %}
 Get-ItemProperty "HKLM:\Software\Microsoft\Windows\CurrentVersion\Uninstall\*" | Select-Object DisplayName, DisplayVersion, Publisher
@@ -15,7 +15,7 @@ Get-ItemProperty "HKLM:\Software\Microsoft\Windows\CurrentVersion\Uninstall\*" |
 
 Hemos utilizado `Select-Object` para que el output apareciera inteligible, pero se puede omitir para revisar los valores de cada subclave. Es posible también utilizar `Format-Table -AutoSize` si no se requieren valores específicos.
 
-Otra fuente es la clave de registro `HKEY_LOCAL_MACHINE\Software\Wow6432node\Microsoft\Windows\CurrentVersion\Uninstall` donde podemos encontrar las aplicaciones de 32bits. En esta ocasión hemos creado un array y agrupado los outputs.
+Otra fuente de datos, también consultada por `appwiz.cpl`, es la clave de registro `HKEY_LOCAL_MACHINE\Software\Wow6432node\Microsoft\Windows\CurrentVersion\Uninstall` donde podemos encontrar las aplicaciones de 32bits. En esta ocasión hemos creado un array y agrupado los outputs.
 
 {% highlight powershell %}
 # creamos un array donde almacenaremos los valores

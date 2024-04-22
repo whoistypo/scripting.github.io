@@ -8,6 +8,9 @@ paginate:            5
 permalink:           pretty
 pygments:            true
 
+markdown: redcarpet 
+highlighter: pygments
+
 # Gems
 plugins:
   - jekyll-paginate

@@ -3,9 +3,7 @@ layout: post
 title: Desvelando las aplicaciones instaladas en Windows 10
 ---
 
-`appwiz.cpl` es el elemento del Panel de Control que todos conocen como **Programas y características**. Es la herramienta que permite desinstalar aplicaciones desde que se implementó en Windows 98 (¡hoy es el 26º aniversario de aquel famoso BSOD, felicítenlos!). Técnicamente, este elemento interactúa con el registro de Windows, específicamente con las claves relacionadas con la información de instalación de programas. Los valores de estas claves dependen de muchos factores como el tipo de arquitectura, tipo de instalación o donde se haya instalado la aplicación que informa el registro.
-
-Con algo de ingeniería inversa, podemos llegar a entender casi completamente cómo este elemento del Panel de Control recupera la información sobre los programas instalados, y así descubrir que puede faltar mucha información que podría ser relevante, por ejemplo, para administradores de sistemas o usuarios más exigentes. Conociendo las fuentes de datos, podemos intentar interrogarlas nosotros mismos mediante Powershell.
+`appwiz.cpl` es el elemento del Panel de Control que todos conocen como **Programas y características**. Es la herramienta que permite desinstalar aplicaciones desde que se implementó en Windows 98 (¡hoy es el 26º aniversario de aquel famoso BSOD, felicítenlos!). Técnicamente, este elemento interactúa con el registro de Windows, específicamente con las claves relacionadas con la información de instalación de programas. Los valores de estas claves dependen de muchos factores como el tipo de arquitectura, tipo de instalación o donde se haya instalado la aplicación que informa el registro. Con algo de ingeniería inversa, podemos llegar a entender casi completamente cómo este elemento del Panel de Control recupera la información sobre los programas instalados, y así descubrir que puede faltar mucha información que podría ser relevante, por ejemplo, para administradores de sistemas o usuarios más exigentes. Conociendo las fuentes de datos, podemos intentar interrogarlas nosotros mismos mediante Powershell.
 
 ## Consultando el registro
 
@@ -48,7 +46,7 @@ Get-WmiObject -Class Win32_Product | Select-Object Name, Version, Vendor | Sort-
 Get-WmiObject -Class Win32_SoftwareFeature | Select-Object ProductName, Version, Vendor | Sort-Object ProductName -Unique
 {% endhighlight %}
 
-Otras clases que se pueden utilizar en entornos SCCM son `Win32_AddRemovePrograms`, `Win32_InstalledSoftwareElement` o `Win32_ProductSoftwareFeatures`. Por último, si se necesitára consultar las últimas actualizaciones del sistema operativo, sería posible utilizando la clase `Win32_QuickFixEngineering`.
+Otras clases que se pueden utilizar, por ejemplo, en entornos SCCM, son `Win32_AddRemovePrograms`, `Win32_InstalledSoftwareElement` o `Win32_ProductSoftwareFeatures`. Por último, si se necesitára consultar las últimas actualizaciones del sistema operativo, sería posible utilizando la clase `Win32_QuickFixEngineering`.
 
 ## Conclusiones
 Ya sea mediante consultas al registro de Windows o utilizando las clases WMI, hemos encontrado diversas opciones para obtener información detallada sobre las aplicaciones instaladas, sus versiones y más. Hemos aprendido cómo acceder a datos que pueden ser cruciales para administradores de sistemas, usuarios avanzados y entornos empresariales. Hemos identificado las diferencias en velocidad, eficiencia y alcance entre las diferentes metodologías, lo que nos permite elegir la más adecuada según nuestras necesidades y objetivos específicos. Este conocimiento nos capacita para tomar decisiones informadas y eficaces en la administración del software en nuestros sistemas.

@@ -34,7 +34,7 @@ $output | Select-Object DisplayName, DisplayVersion, Publisher | Sort-Object Dis
 Hay otras fuentes como la `HKLM\Software\Classes\Installer\Products`, donde se almacenan los valores de las aplicaciones instaladas mediante MSI, o `HKCU\Software\Microsoft\Windows\CurrentVersion\Uninstall` y `HKCU\Software\Microsoft\Installer\Products`, donde podemos encontrar información sobre las aplicaciones instaladas solamente para el current user.
 
 ## Clases WMI
-A través de las Clases WMI, podemos acceder a una amplia gama de información sobre el software instalado en un sistema, desde el nombre y la versión de las aplicaciones hasta detalles más específicos como la ubicación de instalación y la fecha de instalación. Cabe destacar que algunas, para su uso, requieren software preinstalado como, por ejemplo, clientes SMS/SCCM. Los cmdlets que se suelen utilizar en estos casos son `Get-CIMInstance` y `Get-WmiObject`. WMI es la versión de Microsoft de CIM. CIM es un estándar open-source para la recopilación y visualización de información de un ordenador. ¿La diferencia? A nivel local casi ninguna, sin embargo, en términos de **remoting**, cuando hablamos de WMI, el equipo remoto debe permitir el tráfico de red entrante en los puertos TCP 135, 445 y otros puertos adicionales asignados dinámicamente entre 1024 y 1034 (¡pero esto lo dejamos para otro post!). Una última nota importante es que estos cmdlets son más lentos respecto a las interrogaciones del registro porque, al parecer, puede que realicen consistency checks contra cada una de las aplicaciones.
+A través de las Clases WMI, podemos acceder a una amplia gama de información sobre el software instalado en un sistema, desde el nombre y la versión de las aplicaciones hasta detalles más específicos como la ubicación de instalación y la fecha de instalación. Cabe destacar que algunas, para su uso, requieren software preinstalado como, por ejemplo, clientes SMS/SCCM. Los cmdlets que se suelen utilizar en estos casos son `Get-CIMInstance` y `Get-WmiObject`. WMI es la versión de Microsoft de CIM. CIM es un estándar open-source para la recopilación y visualización de información de un ordenador. Una última nota importante es que estos cmdlets son más lentos respecto a las interrogaciones del registro porque, al parecer, puede que realicen consistency checks contra cada una de las aplicaciones.
 
 {% highlight powershell %}
 Get-CIMInstance Win32_Product | Select-Object Name, Version, Vendor | Sort-Object Name -Unique
@@ -48,11 +48,7 @@ Get-WmiObject -Class Win32_Product | Select-Object Name, Version, Vendor | Sort-
 Get-WmiObject -Class Win32_SoftwareFeature | Select-Object ProductName, Version, Vendor | Sort-Object ProductName -Unique
 {% endhighlight %}
 
-Otras clases que se pueden utilizar en entornos SCCM son `Win32_AddRemovePrograms`, `Win32_InstalledSoftwareElement` o `Win32_ProductSoftwareFeatures`.
+Otras clases que se pueden utilizar en entornos SCCM son `Win32_AddRemovePrograms`, `Win32_InstalledSoftwareElement` o `Win32_ProductSoftwareFeatures`. Por último, si se necesitára consultar las últimas actualizaciones del sistema operativo, sería posible utilizando la clase `Win32_QuickFixEngineering`.
 
-## Updates 
-Por último, si se necesitára consultar las últimas actualizaciones del sistema operativo, sería posible utilizando la clase `Win32_QuickFixEngineering`.
-
-{% highlight powershell %}
-Get-WmiObject -Class Win32_QuickFixEngineering
-{% endhighlight %}
+## Conclusiones
+Ya sea mediante consultas al registro de Windows o utilizando las clases WMI, hemos encontrado diversas opciones para obtener información detallada sobre las aplicaciones instaladas, sus versiones y más. Hemos aprendido cómo acceder a datos que pueden ser cruciales para administradores de sistemas, usuarios avanzados y entornos empresariales. Hemos identificado las diferencias en velocidad, eficiencia y alcance entre las diferentes metodologías, lo que nos permite elegir la más adecuada según nuestras necesidades y objetivos específicos. Este conocimiento nos capacita para tomar decisiones informadas y eficaces en la administración del software en nuestros sistemas.

@@ -7,7 +7,7 @@ title: Desvelando las aplicaciones instaladas en Windows 10
 
 ## Consultando el registro
 
-La primera fuente de datos es la clave de registro `HKLM\Software\Microsoft\Windows\CurrentVersion\Uninstall`. Dentro de esta clave, cada subclave representa una aplicación instalada en el sistema. Cada una de estas subclaves contiene información sobre la aplicación, como su *DisplayName*, *DisplayVersion*, *Publisher* y más. Veamos cómo sacar la información con el cmdlet `Get-ItemProperty`. 
+La primera fuente de datos es la clave de registro `HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Uninstall`. Dentro de esta clave, cada subclave representa una aplicación instalada en el sistema. Cada una de estas subclaves contiene información sobre la aplicación, como su *DisplayName*, *DisplayVersion*, *Publisher* y más. Veamos cómo sacar la información con el cmdlet `Get-ItemProperty`. 
 
 {% highlight powershell %}
 Get-ItemProperty "HKLM:\Software\Microsoft\Windows\CurrentVersion\Uninstall\*" | Select-Object DisplayName, DisplayVersion, Publisher
@@ -15,7 +15,7 @@ Get-ItemProperty "HKLM:\Software\Microsoft\Windows\CurrentVersion\Uninstall\*" |
 
 Hemos utilizado `Select-Object` para que el output apareciera inteligible, pero se puede omitir para revisar los valores de cada subclave. Es posible también utilizar `Format-Table -AutoSize` si no se requieren valores específicos.
 
-Otra fuente es la clave de registro `HKLM:\Software\Wow6432node\Microsoft\Windows\CurrentVersion\Uninstall` donde podemos encontrar las aplicaciones de 32bits. En esta ocasión hemos creado un array y agrupado los outputs.
+Otra fuente es la clave de registro `HKEY_LOCAL_MACHINE\Software\Wow6432node\Microsoft\Windows\CurrentVersion\Uninstall` donde podemos encontrar las aplicaciones de 32bits. En esta ocasión hemos creado un array y agrupado los outputs.
 
 {% highlight powershell %}
 # creamos un array donde almacenaremos los valores
@@ -29,7 +29,7 @@ $output += Get-ItemProperty "HKLM:\Software\Wow6432node\Microsoft\Windows\Curren
 $output | Select-Object DisplayName, DisplayVersion, Publisher | Sort-Object DisplayName -Unique
 {% endhighlight %}
 
-Hay otras fuentes como la `HKLM\Software\Classes\Installer\Products`, donde se almacenan los valores de las aplicaciones instaladas mediante MSI, o `HKCU\Software\Microsoft\Windows\CurrentVersion\Uninstall` y `HKCU\Software\Microsoft\Installer\Products`, donde podemos encontrar información sobre las aplicaciones instaladas solamente para el current user.
+Hay otras fuentes como la `HKEY_LOCAL_MACHINE\Software\Classes\Installer\Products`, donde se almacenan los valores de las aplicaciones instaladas mediante MSI, o `HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Uninstall` y `HKEY_CURRENT_USER\Software\Microsoft\Installer\Products`, donde podemos encontrar información sobre las aplicaciones instaladas solamente para el current user.
 
 ## Clases WMI
 A través de las Clases WMI, podemos acceder a una amplia gama de información sobre el software instalado en un sistema, desde el nombre y la versión de las aplicaciones hasta detalles más específicos como la ubicación de instalación y la fecha de instalación. Cabe destacar que algunas, para su uso, requieren software preinstalado como, por ejemplo, clientes SMS/SCCM. Los cmdlets que se suelen utilizar en estos casos son `Get-CIMInstance` y `Get-WmiObject`. WMI es la versión de Microsoft de CIM. CIM es un estándar open-source para la recopilación y visualización de información de un ordenador. Una última nota importante es que estos cmdlets son más lentos respecto a las interrogaciones del registro porque, al parecer, puede que realicen consistency checks contra cada una de las aplicaciones.

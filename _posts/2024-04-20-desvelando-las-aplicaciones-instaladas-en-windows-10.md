@@ -7,7 +7,7 @@ title: Desvelando las aplicaciones instaladas en Windows 10
 
 ## Consultando el registro
 
-La primera fuente es la clave de registro `HKLM\Software\Microsoft\Windows\CurrentVersion\Uninstall`. Dentro de esta clave, cada subclave representa una aplicación instalada en el sistema. Cada una de estas subclaves contiene información sobre la aplicación, como su *DisplayName*, *DisplayVersion*, *Publisher* y más. Veamos cómo sacar la información con el cmdlet `Get-ItemProperty`. 
+La primera fuente de datos es la clave de registro `HKLM\Software\Microsoft\Windows\CurrentVersion\Uninstall`. Dentro de esta clave, cada subclave representa una aplicación instalada en el sistema. Cada una de estas subclaves contiene información sobre la aplicación, como su *DisplayName*, *DisplayVersion*, *Publisher* y más. Veamos cómo sacar la información con el cmdlet `Get-ItemProperty`. 
 
 {% highlight powershell %}
 Get-ItemProperty "HKLM:\Software\Microsoft\Windows\CurrentVersion\Uninstall\*" | Select-Object DisplayName, DisplayVersion, Publisher
